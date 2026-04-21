@@ -13,7 +13,7 @@ class Solution:
         
         vocab = {w: i+1 for i,w in enumerate(sorted(set(w for sent in all_sents for w in sent.split())))}
 
-        encoded = [torch.tensor([vocab[w] for w in sent.split()], dtype=torch.float) for sent in all_sents]
+        encoded = [torch.tensor([vocab[w] for w in sent.split()]) for sent in all_sents]
 
         ans = nn.utils.rnn.pad_sequence(encoded, batch_first=True, padding_value=0)
 
