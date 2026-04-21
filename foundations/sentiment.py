@@ -23,4 +23,4 @@ class Solution(nn.Module):
         # but you should average it into a B, embed_dim tensor before using the Linear layer
 
         # Return a B, 1 tensor and round to 4 decimal places
-        return self.model(x)
+        return torch.round(self.model(x), decimals=4)
