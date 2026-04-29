@@ -14,7 +14,7 @@ class Solution:
                     if l < r:
                         temp.append(n_str[l:r])
                         l = r
-                    else:  # l == r: single char not in vocab
+                    else: 
                         temp.append(n_str[l:r+1])
                         l = r + 1
             if l != len(n_str):
@@ -31,9 +31,9 @@ class Solution:
             best_end = -1
             for r in range(l + 1, len(text) + 1):
                 if text[l:r] in vocab:
-                    best_end = r          # keep extending to find the longest match
+                    best_end = r
             if best_end == -1:
-                best_end = l + 1          # unknown character, consume one
+                best_end = l + 1
             count += 1
             l = best_end
         return count
