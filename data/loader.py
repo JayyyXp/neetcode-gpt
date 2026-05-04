@@ -17,11 +17,7 @@ class Solution:
         # Use torch.randint to pick random starting positions
         torch.manual_seed(0)
         rand = torch.randint(data.shape[0] - context_length, (batch_size, ))
-        X = torch.zeros(batch_size, context_length, dtype=data.dtype)  
-        Y = torch.zeros(batch_size, context_length, dtype=data.dtype)  
-
-        for i, start in enumerate(rand):
-            X[i] = data[start : start + context_length]
-            Y[i] = data[start + 1 : start + 1 + context_length]
+        X = torch.stack([data[start : start + context_length] for start in rand])
+        Y = torch.stack([data[start + 1 : start + 1 + context_length] for start in rand])
 
         return (X, Y)
